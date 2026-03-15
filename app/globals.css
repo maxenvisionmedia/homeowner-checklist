@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #1a1a1a;
+}
+
+/* Custom checkbox */
+.checklist-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.checklist-item input[type="checkbox"]:checked {
+  background: #DCA738;
+  border-color: #DCA738;
+}
+
+.checklist-item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 8px;
+  height: 13px;
+  border: 2.5px solid #1a1a1a;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.checklist-item label {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checklist-item input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.progress-fill {
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Print / PDF ── */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: #1a1a1a;
+  }
+
+  .print-card {
+    background: white !important;
+    border: 1px solid #e5e7eb !important;
+    break-inside: avoid;
+    margin-bottom: 16px;
+  }
+
+  .print-text {
+    color: #1a1a1a !important;
+  }
+
+  .print-sub {
+    color: #555 !important;
+  }
+
+  .checklist-item input[type="checkbox"] {
+    appearance: auto !important;
+    -webkit-appearance: checkbox !important;
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    border: none !important;
+    background: transparent !important;
+  }
+
+  .checklist-item input[type="checkbox"]:checked + label {
+    text-decoration: none !important;
+    color: #1a1a1a !important;
+  }
+}
